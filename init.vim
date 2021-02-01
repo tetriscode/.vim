@@ -3,9 +3,11 @@ call plug#begin('~/.vim/plugged')
 Plug 'justinmk/vim-dirvish'
 Plug 'tpope/vim-vinegar'
 Plug 'preservim/nerdtree'
+Plug 'itchyny/lightline.vim'
 
 " Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Raimondi/delimitMate'
 
 " Git
 Plug 'tpope/vim-rhubarb'
@@ -76,26 +78,27 @@ set autoread                    " Automatically reread changed files without ask
 set laststatus=2
 set hidden
 set termguicolors
-"set statusline=%f\ \ %{fugitive#head()}
+set statusline=%f\ \ %{fugitive#head()}
 set background=dark
 set backspace=indent,eol,start  " Makes backspace key more powerful.
-set showcmd                     " Show me what I'm typing
-set showmode                    " Show current mode.
-set fileformats=unix,dos,mac    " Prefer Unix over Windows over OS 9 formats
 
-set noshowmatch                 " Do not show matching brackets by flickering
-set noshowmode                  " We show the mode with airlien or lightline
-set incsearch                   " Shows the match while typing
-set hlsearch                    " Highlight found searches
-set ignorecase                  " Search case insensitive...
-set smartcase                   " ... but not when search pattern contains upper case characters
-set ttyfast
+"set showcmd                     " Show me what I'm typing
+"set showmode                    " Show current mode.
+"set fileformats=unix,dos,mac    " Prefer Unix over Windows over OS 9 formats
+
+"set noshowmatch                 " Do not show matching brackets by flickering
+"set noshowmode                  " We show the mode with airlien or lightline
+"set incsearch                   " Shows the match while typing
+"set hlsearch                    " Highlight found searches
+"set ignorecase                  " Search case insensitive...
+"set smartcase                   " ... but not when search pattern contains upper case characters
+"set ttyfast
 " set ttyscroll=3               " noop on linux ?
 set lazyredraw          	      " Wait to redraw "
 
 " speed up syntax highlighting
-set nocursorcolumn
-set nocursorline
+"set nocursorcolumn
+"set nocursorline
 
 syntax sync minlines=256
 set synmaxcol=300
@@ -137,11 +140,10 @@ set ttimeoutlen=10
 
 set shell=/bin/zsh
 
-colorscheme night-owl
 
 set guifont=Fira\ Code:h18
-set guioptions-=L
-
+" set guioptions-=L
+colorscheme two-firewatch
 " vim-javascript
 " let g:javascript_plugin_jsdoc = 1
 " let g:javascript_plugin_flow = 1
@@ -157,10 +159,17 @@ noremap <Leader>f :NERDTreeFind<cr>
 
 let NERDTreeShowHidden=1
 
-let NERDTreeIgnore=['\.vim$', '\~$', '\.git$', '.DS_Store']
+let NERDTreeIgnore=['\.vim$', 'node_modules', '\~$', '\.git$', '.DS_Store']
 
 " Close nerdtree and vim on close file
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" ==================== delimitMate ====================
+let g:delimitMate_expand_cr = 1
+let g:delimitMate_expand_space = 1
+let g:delimitMate_smart_quotes = 1
+let g:delimitMate_expand_inside_quotes = 0
+let g:delimitMate_smart_matchpairs = '^\%(\w\|\$\)'
 
 
 " Disable netrw
@@ -178,14 +187,11 @@ let g:ale_lint_on_text_changed = 'never' " only lint files when i save
 let g:ale_fixers = ['prettier', 'eslint'] 
 let g:ale_fix_on_save = 1
 let g:ale_javascript_prettier_use_local_config = 1
+let g:ale_completion_enabled = 0
 
 " ------- Completion -----
 let g:deoplete#enable_at_startup = 1
 
-" ------- Clojure --------
-let g:ale_linters = {
-      \ 'clojure': ['clj-kondo', 'joker']
-      \}
 
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
@@ -206,7 +212,10 @@ nnoremap <Leader>s :wq<CR>
 nnoremap <Leader>c :ccl<CR>
 nnoremap <Leader>Q :qa<CR>
 nnoremap Q <nop>
-nmap <leader>a :GrepperRg 
+nmap <leader>a :GrepperRg
+" Buffer prev/next
+nnoremap <C-x> :bnext<CR>
+nnoremap <C-z> :bprev<CR>
 
 " toggle prettier
 nnoremap <Leader>f :let g:ale_fix_on_save = !g:ale_fix_on_save<CR>
