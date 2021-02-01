@@ -9,5 +9,5 @@ It's my `.vim`! Hooray. It changes often, but in general some notes:
 
 homebrew+nodejs bootstrap:
 
-    brew install git macvim the_silver_searcher
-    npm install -g eslint
+brew install git macvim the_silver_searcher
+npm install -g eslint

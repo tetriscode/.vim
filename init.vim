@@ -2,6 +2,10 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'justinmk/vim-dirvish'
 Plug 'tpope/vim-vinegar'
+Plug 'preservim/nerdtree'
+
+" Completion
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Git
 Plug 'tpope/vim-rhubarb'
@@ -38,6 +42,13 @@ Plug 'bluz71/vim-moonfly-colors'
 Plug 'robertmeta/nofrils'
 Plug 'Lokaltog/vim-monotone'
 Plug 'w0rp/ale'
+Plug 'haishanh/night-owl.vim'
+
+" Golang
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+" Clojure
+Plug 'Olical/conjure', {'tag': 'v4.13.0'}
 
 call plug#end()
 
@@ -126,14 +137,31 @@ set ttimeoutlen=10
 
 set shell=/bin/zsh
 
-colorscheme two-firewatch
+colorscheme night-owl
 
-set guifont=Inconsolata:h18
+set guifont=Fira\ Code:h18
 set guioptions-=L
 
 " vim-javascript
 " let g:javascript_plugin_jsdoc = 1
 " let g:javascript_plugin_flow = 1
+
+let mapleader=","
+let g:mapleader = ","
+
+" ==================== NerdTree ====================
+" For toggling
+nmap <C-n> :NERDTreeToggle<CR>
+noremap <Leader>n :NERDTreeToggle<cr>
+noremap <Leader>f :NERDTreeFind<cr>
+
+let NERDTreeShowHidden=1
+
+let NERDTreeIgnore=['\.vim$', '\~$', '\.git$', '.DS_Store']
+
+" Close nerdtree and vim on close file
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
 
 " Disable netrw
 let loaded_netrwPlugin = 1
@@ -147,8 +175,17 @@ let g:grepper.simple_prompt = 1
 let g:grepper.quickfix = 1
 let g:grepper.highlight = 1
 let g:ale_lint_on_text_changed = 'never' " only lint files when i save
+let g:ale_fixers = ['prettier', 'eslint'] 
 let g:ale_fix_on_save = 1
 let g:ale_javascript_prettier_use_local_config = 1
+
+" ------- Completion -----
+let g:deoplete#enable_at_startup = 1
+
+" ------- Clojure --------
+let g:ale_linters = {
+      \ 'clojure': ['clj-kondo', 'joker']
+      \}
 
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
@@ -170,5 +207,6 @@ nnoremap <Leader>c :ccl<CR>
 nnoremap <Leader>Q :qa<CR>
 nnoremap Q <nop>
 nmap <leader>a :GrepperRg 
+
 " toggle prettier
 nnoremap <Leader>f :let g:ale_fix_on_save = !g:ale_fix_on_save<CR>
