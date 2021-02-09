@@ -34,16 +34,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
 
 " color schemes
-Plug 'chriskempson/base16-vim'
-Plug 'cocopon/iceberg.vim'
-Plug 'rakr/vim-one'
-Plug 'junegunn/seoul256.vim'
-Plug 'rakr/vim-two-firewatch'
-Plug 'atelierbram/Base2Tone-vim'
-Plug 'bluz71/vim-moonfly-colors'
-Plug 'robertmeta/nofrils'
-Plug 'Lokaltog/vim-monotone'
-Plug 'w0rp/ale'
 Plug 'haishanh/night-owl.vim'
 
 " Golang
@@ -143,7 +133,7 @@ set shell=/bin/zsh
 
 set guifont=Fira\ Code:h18
 " set guioptions-=L
-colorscheme two-firewatch
+colorscheme night-owl
 " vim-javascript
 " let g:javascript_plugin_jsdoc = 1
 " let g:javascript_plugin_flow = 1
