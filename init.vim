@@ -42,6 +42,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Clojure
 Plug 'Olical/conjure', {'tag': 'v4.13.0'}
 
+Plug 'wakatime/vim-wakatime'
 call plug#end()
 
 
