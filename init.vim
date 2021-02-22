@@ -5,6 +5,9 @@ Plug 'tpope/vim-vinegar'
 Plug 'preservim/nerdtree'
 Plug 'itchyny/lightline.vim'
 
+" Linting
+Plug 'dense-analysis/ale'
+
 " Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Raimondi/delimitMate'
@@ -41,7 +44,9 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Clojure
 Plug 'Olical/conjure', {'tag': 'v4.13.0'}
+Plug 'ncm2/float-preview.nvim'
 
+" Analytics
 Plug 'wakatime/vim-wakatime'
 call plug#end()
 
@@ -183,6 +188,11 @@ let g:ale_completion_enabled = 0
 " ------- Completion -----
 let g:deoplete#enable_at_startup = 1
 
+
+" ------- Clojure --------
+let g:ale_linters = {
+      \ 'clojure': ['clj-kondo','joker']
+      \ }
 
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
