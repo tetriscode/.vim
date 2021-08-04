@@ -23,6 +23,7 @@ Plug 'gavocanov/vim-js-indent'
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'hail2u/vim-css3-syntax'
+Plug 'leafgarland/typescript-vim'
 
 " Searching
 Plug 'mhinz/vim-grepper'
