@@ -28,6 +28,7 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'leafgarland/typescript-vim'
 Plug 'Quramy/tsuquyomi'
+Plug 'prettier/vim-prettier'
 
 " Searching
 Plug 'mhinz/vim-grepper'
@@ -188,7 +189,7 @@ let g:ale_lint_on_text_changed = 'never' " only lint files when i save
 let g:ale_fixers = ['prettier', 'eslint'] 
 let g:ale_fix_on_save = 1
 let g:ale_javascript_prettier_use_local_config = 1
-let g:ale_completion_enabled = 0
+let g:ale_completion_enabled = 1
 
 " ------- Completion -----
 let g:deoplete#enable_at_startup = 1
