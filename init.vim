@@ -5,6 +5,9 @@ Plug 'tpope/vim-vinegar'
 Plug 'preservim/nerdtree'
 Plug 'itchyny/lightline.vim'
 
+" Python
+Plug 'davidhalter/jedi-vim'
+
 " Linting
 Plug 'dense-analysis/ale'
 
@@ -24,6 +27,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'leafgarland/typescript-vim'
+Plug 'Quramy/tsuquyomi'
 
 " Searching
 Plug 'mhinz/vim-grepper'
