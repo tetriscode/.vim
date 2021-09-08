@@ -29,6 +29,7 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'leafgarland/typescript-vim'
 Plug 'Quramy/tsuquyomi'
 Plug 'prettier/vim-prettier'
+Plug 'jparise/vim-graphql'
 
 " Searching
 Plug 'mhinz/vim-grepper'
@@ -44,13 +45,14 @@ Plug 'tpope/vim-sleuth'
 
 " color schemes
 Plug 'haishanh/night-owl.vim'
+Plug 'dracula/vim',{'as':'dracula'}
 
 " Golang
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Clojure
 Plug 'Olical/conjure', {'tag': 'v4.13.0'}
-Plug 'ncm2/float-preview.nvim'
+" Plug 'ncm2/float-preview.nvim'
 
 " Analytics
 Plug 'wakatime/vim-wakatime'
@@ -145,10 +147,19 @@ set shell=/bin/zsh
 
 set guifont=Fira\ Code:h18
 " set guioptions-=L
-colorscheme night-owl
+colorscheme dracula
+
 " vim-javascript
-" let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_jsdoc = 1
 " let g:javascript_plugin_flow = 1
+" autocmd FileType typescript setlocal completeopt-=menu
+let g:tsuquyomi_completion_detail = 1
+autocmd FileType typescript setlocal completeopt+=menu,preview
+
+" float_preview
+" let g:float_preview#docked = 1
+" let g:float_preview#max_width = 80
+" let g:float_preview#max_height = 40
 
 let mapleader=","
 let g:mapleader = ","
@@ -190,6 +201,8 @@ let g:ale_fixers = ['prettier', 'eslint']
 let g:ale_fix_on_save = 1
 let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_completion_enabled = 1
+let g:ale_completion_autoimport = 1
+nnoremap <C-[> :ALEGoToDefinition<CR>
 
 " ------- Completion -----
 let g:deoplete#enable_at_startup = 1
@@ -224,5 +237,5 @@ nmap <leader>a :GrepperRg
 nnoremap <C-x> :bnext<CR>
 nnoremap <C-z> :bprev<CR>
 
-" toggle prettier
+" toggle prettie
 nnoremap <Leader>f :let g:ale_fix_on_save = !g:ale_fix_on_save<CR>
