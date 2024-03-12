@@ -17,7 +17,7 @@ Plug 'Raimondi/delimitMate'
 
 " Git
 Plug 'tpope/vim-rhubarb'
-Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'rhysd/git-messenger.vim'
 
@@ -47,17 +47,9 @@ Plug 'tpope/vim-sleuth'
 Plug 'haishanh/night-owl.vim'
 Plug 'dracula/vim',{'as':'dracula'}
 
-" Golang
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
-" Clojure
-Plug 'Olical/conjure', {'tag': 'v4.13.0'}
-" Plug 'ncm2/float-preview.nvim'
-
 " Analytics
 Plug 'wakatime/vim-wakatime'
 call plug#end()
-
 
 " modernity
 set mouse=a
@@ -82,7 +74,7 @@ set autoread                    " Automatically reread changed files without ask
 set laststatus=2
 set hidden
 set termguicolors
-set statusline=%f\ \ %{fugitive#head()}
+"set statusline=%f\ \ %{fugitive#head()}
 set background=dark
 set backspace=indent,eol,start  " Makes backspace key more powerful.
 
